@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "properties": {
+        "maximumPageSize": {
+            "required": false,
+            "type": "string"
+        },
+        "nextPageToken": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "domain": {
+                    "description": "The name of the domain containing the workflow execution.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "execution": {
+                    "description": "Specifies the workflow execution for which to return the history.",
+                    "properties": {
+                        "runId": {
+                            "description": "A system-generated unique identifier for the workflow execution.",
+                            "maxLength": 64,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "workflowId": {
+                            "description": "The user defined identifier associated with the workflow execution.",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "workflowId",
+                        "runId"
+                    ],
+                    "type": "object"
+                },
+                "maximumPageSize": {
+                    "description": "<p>The maximum number of results that are returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>",
+                    "maximum": 1000,
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "nextPageToken": {
+                    "description": "<p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>",
+                    "maxLength": 2048,
+                    "type": "string"
+                },
+                "reverseOrder": {
+                    "description": "When set to <code>true</code>, returns the events in reverse order. By default the results are returned in ascending order of the <code>eventTimeStamp</code> of the events.",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "domain",
+                "execution"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

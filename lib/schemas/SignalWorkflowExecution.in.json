@@ -1,0 +1,79 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "domain": {
+                    "description": "The name of the domain containing the workflow execution to signal.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "input": {
+                    "description": "Data to attach to the <code>WorkflowExecutionSignaled</code> event in the target workflow execution's history.",
+                    "maxLength": 32768,
+                    "type": "string"
+                },
+                "runId": {
+                    "description": "The runId of the workflow execution to signal.",
+                    "maxLength": 64,
+                    "type": "string"
+                },
+                "signalName": {
+                    "description": "The name of the signal. This name must be meaningful to the target workflow.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "workflowId": {
+                    "description": "The workflowId of the workflow execution to signal.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "domain",
+                "workflowId",
+                "signalName"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

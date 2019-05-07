@@ -1,0 +1,125 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "domain": {
+                    "description": "The name of the domain containing the workflow executions to count.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "executionFilter": {
+                    "description": "<p>If specified, only workflow executions matching the <code>WorkflowId</code> in the filter are counted.</p> <note> <p> <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</p> </note>",
+                    "properties": {
+                        "workflowId": {
+                            "description": "The workflowId to pass of match the criteria of this filter.",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "workflowId"
+                    ],
+                    "type": "object"
+                },
+                "startTimeFilter": {
+                    "description": "Specifies the start time criteria that workflow executions must meet in order to be counted.",
+                    "properties": {
+                        "latestDate": {
+                            "description": "Specifies the latest start or close date and time to return.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "oldestDate": {
+                            "description": "Specifies the oldest start or close date and time to return.",
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "oldestDate"
+                    ],
+                    "type": "object"
+                },
+                "tagFilter": {
+                    "description": "<p>If specified, only executions that have a tag that matches the filter are counted.</p> <note> <p> <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</p> </note>",
+                    "properties": {
+                        "tag": {
+                            "description": " Specifies the tag that must be associated with the execution for it to meet the filter criteria.",
+                            "maxLength": 256,
+                            "minLength": 0,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "tag"
+                    ],
+                    "type": "object"
+                },
+                "typeFilter": {
+                    "description": "<p>Specifies the type of the workflow executions to be counted.</p> <note> <p> <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</p> </note>",
+                    "properties": {
+                        "name": {
+                            "description": " Name of the workflow type.",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "version": {
+                            "description": "Version of the workflow type.",
+                            "maxLength": 64,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "domain",
+                "startTimeFilter"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
